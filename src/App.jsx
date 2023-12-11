@@ -1,16 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { StartView } from "./views/StartView";
 import { QuizView } from "./views/QuizView";
 import { ResultView } from "./views/ResultView";
+import { ViewContextProvieder } from "./views/AppView";
+import { ViewContext } from "./context/ViewContext";
 
 const App = () => {
-    const [view,setView] = useState('start')
-    
+    const ctxValue = useContext(ViewContext)
     return(
-        <main className="flex justify-center items-center h-full">
-            {view === 'start' && <StartView />}
-        </main>
+        <ViewContextProvieder>
+            {ctxValue}
+        </ViewContextProvieder>
     )
 }
 
