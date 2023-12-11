@@ -32,6 +32,9 @@ body {
   background-size: cover;
   background-position: center;
 }
+div#root{
+  height: 90vh;
+}
 
 header {
   margin: 2rem 0;
