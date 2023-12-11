@@ -7,10 +7,17 @@ import { ViewContextProvieder } from "./views/AppView";
 import { ViewContext } from "./context/ViewContext";
 
 const App = () => {
-    const ctxValue = useContext(ViewContext)
+    const [view,setView] = useState(useContext(ViewContext))
+
+    const handleStart = () => {
+        setView('quiz')
+    }
+
     return(
         <ViewContextProvieder>
-            {ctxValue}
+            {view === 'start' && <StartView onClick={handleStart}/>}
+            {view === 'quiz' && <QuizView/>}
+            {view === 'result' && <ResultView/>}
         </ViewContextProvieder>
     )
 }

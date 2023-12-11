@@ -2,10 +2,11 @@ import React from "react";
 import { ViewContext } from "../context/ViewContext";
 
 export const ViewContextProvieder = ({children}) => {
-    const viewContextValue = 'start'
     return(
-        <ViewContext.Provider value={viewContextValue}>
-            {children}
+        <ViewContext.Provider>
+            <div className="flex flex-col justify-center items-center h-5/6">
+                {children}
+            </div>
         </ViewContext.Provider>
     )
 }
