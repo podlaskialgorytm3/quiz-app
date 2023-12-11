@@ -31,6 +31,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  font-family: 'Roboto Condensed', sans-serif;
+
 }
 div#root{
   height: 90vh;

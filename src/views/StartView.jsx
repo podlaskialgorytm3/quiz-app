@@ -1,8 +1,9 @@
 import { MainContainer } from "../components/molecules/MainContainer"
+import { Title } from "../components/atoms/Title"
 export const StartView = () => {
     return(
         <MainContainer>
-            <p>Startowa pozycja ... </p>
+            <Title>Welcome to the Quiz App!</Title>
         </MainContainer>
     )
 }
