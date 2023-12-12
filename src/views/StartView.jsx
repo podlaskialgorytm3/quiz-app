@@ -4,13 +4,17 @@ import { MainContainer } from "../components/molecules/MainContainer"
 import { Title } from "../components/atoms/Title"
 import { Button } from "../components/atoms/Button"
 
-export const StartView = ({onClick}) => {
-    const value = useContext(ViewContext)
-    console.log(value)
+export const StartView = () => {
+    const {view, changeView } = useContext(ViewContext)
+    const handleView = () => {
+        console.log(view)
+        changeView('quiz')
+        console.log(view)
+    }
     return(
         <MainContainer>
             <Title>Welcome to the Quiz App!</Title>
-            <Button onClick={onClick}>Click to start Quiz!</Button>
+            <Button onClick={handleView}>Click to start Quiz!</Button>
         </MainContainer>
     )
 }
