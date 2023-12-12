@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ViewContext } from "../context/ViewContext";
 
 export const ViewContextProvider = ({ children }) => {
-  const { view } = useContext(ViewContext);
 
-
+  const ctxValue = {
+    view: 'start'
+  }
   return (
-    <ViewContext.Provider value={view}>
+    <ViewContext.Provider value={ctxValue}>
       <div className="flex flex-col justify-center items-center h-5/6">
         {children}
       </div>

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { StartView } from "./views/StartView";
 import { QuizView } from "./views/QuizView";
 import { ResultView } from "./views/ResultView";
 import { ViewContextProvider } from "./views/AppView";
-import { ViewContext } from "./context/ViewContext";
+
+const basicView = 'start'
 
 const App = () => {
-  const { view } = useContext(ViewContext)
+  const [view,setView] = useState(basicView)
   return (
     <ViewContextProvider>
       {view === "start" && <StartView/>}
