@@ -1,21 +1,8 @@
-import React, { useContext, useState } from "react";
-import { StartView } from "./views/StartView";
-import { QuizView } from "./views/QuizView";
-import { ResultView } from "./views/ResultView";
+import React from "react";
 import { ViewContextProvider } from "./views/AppView";
-import { ViewContext } from "./context/ViewContext";
-
-
-const App = ({value}) => {
-  const {view,changeView} = useContext(ViewContext)
-  console.log(view)
+const App = () => {
   return (
-    <ViewContextProvider>
-      {view === "start" && <StartView/>}
-      {view === "quiz" && <QuizView />}
-      {view === "result" && <ResultView />}
-    </ViewContextProvider>
+    <ViewContextProvider></ViewContextProvider>
   );
 };
-
 export default App;

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { ViewContext } from "../context/ViewContext";
+import { StartView } from '../views/StartView'
+import { QuizView } from '../views/QuizView'
+import { ResultView } from '../views/ResultView'
 
-export const ViewContextProvider = ({ children }) => {
+export const ViewContextProvider = () => {
   const [view,setView] = useState('start')
   const changeView = (newView) => {
     setView(newView)
@@ -9,7 +12,9 @@ export const ViewContextProvider = ({ children }) => {
   return (
     <ViewContext.Provider value={{view,changeView}}>
       <div className="flex flex-col justify-center items-center h-5/6">
-        {children}
+        {view === "start" && <StartView/>}
+        {view === "quiz" && <QuizView />}
+        {view === "result" && <ResultView />}
       </div>
     </ViewContext.Provider>
   );
