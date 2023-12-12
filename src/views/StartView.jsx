@@ -7,9 +7,7 @@ import { Button } from "../components/atoms/Button"
 export const StartView = () => {
     const {view, changeView } = useContext(ViewContext)
     const handleView = () => {
-        console.log(view)
         changeView('quiz')
-        console.log(view)
     }
     return(
         <MainContainer>
