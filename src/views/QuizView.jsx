@@ -13,9 +13,10 @@ const INTERVAL_TIME = 15000
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [progressKey,setProgressKey] = useState(uuidv4())
+    const [color,setColor] = useState('#678ea6')
     const {changeView} = useContext(ViewContext)
     const isQuizEnd = useRef(false)
-    const isAnswearClicked = useRef(false)
+
     useEffect(() => {
         const intervalTimmer = setInterval(() => {
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
@@ -23,9 +24,20 @@ export const QuizView = () => {
         },INTERVAL_TIME)
         return () => clearInterval(intervalTimmer)
     },[questions.length])
+
+    const handleAnswearClick = (isCorrect) => {
+        setColor(isCorrect ? '#4caf50' : '#f44336')
+        setTimeout(() => {
+            setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
+            setProgressKey(uuidv4())
+            setColor('#678ea6')
+        },500)
+    }
+    
     if(currentQuestion === questions.length - 1){
             isQuizEnd.current = true
     }
+
     return(
         <MainContainer>
             {!isQuizEnd.current && (
@@ -36,7 +48,8 @@ export const QuizView = () => {
                         {questions[currentQuestion].answers.map((answear) => (
                             <Answear 
                             key={uuidv4()}
-                            correct={`${questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear)}`}
+                            onClick={() => handleAnswearClick(questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear))}
+                            color={color}
                             >{answear}</Answear>
                         ))}
                         </AnswearContainer>

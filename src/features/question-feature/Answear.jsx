@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const StyledAnswearContainer = styled.div`
@@ -6,24 +5,12 @@ const StyledAnswearContainer = styled.div`
     `;
 
 
-export const Answear = ({ children, correct, ...props }) => {
-  const [color,setColor] = useState('gray')
-  const isCorrect = correct === 'true';
-
-  const handleAnswerClick = () => {
-    if(isCorrect){
-      setColor('green')
-    }
-    else{
-        setColor('red')
-    }
-  };
-
+export const Answear = ({ children,onClick,color, ...props }) => {
   return (
     <StyledAnswearContainer
       className="w-[700px] h-16 mt-6 bg-gray-700 text-center leading-[64px] rounded-3xl"
       {...props}
-      onClick={handleAnswerClick}
+      onClick={onClick}
       color={color}
     >
       {children}
