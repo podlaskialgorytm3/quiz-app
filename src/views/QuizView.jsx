@@ -7,7 +7,7 @@ import { AnswearContainer } from '../features/question-feature/AnswearContainer'
 import { Answear } from "../features/question-feature/Answear"
 import questions from '../data/questions'
 
-const INTERVAL_TIME = 15000
+const INTERVAL_TIME = 2000
 
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
