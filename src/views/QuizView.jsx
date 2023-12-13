@@ -8,7 +8,7 @@ import { Answear } from "../features/question-feature/Answear"
 import { Progress } from "../features/question-feature/Progress";
 import questions from '../data/questions'
 
-const INTERVAL_TIME = 15000
+const INTERVAL_TIME = 10000
 
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
@@ -30,14 +30,13 @@ export const QuizView = () => {
         setColor(isCorrect ? '#4caf50' : '#f44336')
         setHighlightedAnswerIndex(answearIndex)
         setTimeout(() => {
-            setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
+            setCurrentQuestion((prevIndex) => prevIndex + 1)
             setHighlightedAnswerIndex(null);
             setProgressKey(uuidv4())
             setColor('#678ea6')
         },500)
     }
-    
-    if(currentQuestion === questions.length - 1){
+    if(currentQuestion + 1 === questions.length + 1){
             isQuizEnd.current = true
     }
 
