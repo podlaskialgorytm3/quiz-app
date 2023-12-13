@@ -7,12 +7,14 @@ import { AnswearContainer } from '../features/question-feature/AnswearContainer'
 import { Answear } from "../features/question-feature/Answear"
 import { Progress } from "../features/question-feature/Progress";
 import questions from '../data/questions'
+import { ResultView } from "./ResultView";
 
-const INTERVAL_TIME = 1000
+const INTERVAL_TIME = 15000
 
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [progressKey,setProgressKey] = useState(uuidv4())
+    const {changeView} = useContext(ViewContext)
     const isQuizEnd = useRef(false)
     useEffect(() => {
         const intervalTimmer = setInterval(() => {
@@ -37,7 +39,7 @@ export const QuizView = () => {
                         </AnswearContainer>
                 </>
             )}
-           
+            {isQuizEnd.current && <>{changeView('result')}</>}
         </MainContainer>
     )
 }
