@@ -1,7 +1,7 @@
-export const AnswerContainer = ({children}) => {
+export const AnswearContainer = () => {
     return(
         <div className="flex flex-col">
-            {children}
+           
         </div>
     )
 }

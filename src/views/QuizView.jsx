@@ -2,10 +2,11 @@ import { useContext,useEffect,useState } from "react"
 import { ViewContext } from "../stores/ViewContext"
 import { MainContainer } from '../components/MainContainer'
 import { Title } from "../components/Title"
-import { AnswerContainer } from '../features/question-feature/AnswerContainer'
+import { AnswearContainer } from '../features/question-feature/AnswearContainer'
+import { Answear } from "../features/question-feature/Answear"
 import questions from '../data/questions'
 
-const INTERVAL_TIME = 15000
+const INTERVAL_TIME = 1000
 
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
@@ -22,9 +23,11 @@ export const QuizView = () => {
     return(
         <MainContainer>
             <Title>{questions[currentQuestion].text}</Title>
-            <AnswerContainer>
-                
-            </AnswerContainer>
+            <AnswearContainer>
+                {questions[currentQuestion].answers.map((answear) => (
+                    <p>{answear}</p>
+                ))}
+            </AnswearContainer>
         </MainContainer>
     )
 }
