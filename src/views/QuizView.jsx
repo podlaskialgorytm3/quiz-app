@@ -13,24 +13,31 @@ const INTERVAL_TIME = 1000
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [progressKey,setProgressKey] = useState(uuidv4())
+    const isQuizEnd = useRef(false)
     useEffect(() => {
         const intervalTimmer = setInterval(() => {
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
             setProgressKey(uuidv4())
         },INTERVAL_TIME)
-        
         return () => clearInterval(intervalTimmer)
     },[questions.length])
-    
+    if(currentQuestion === questions.length - 1){
+            isQuizEnd.current = true
+    }
     return(
         <MainContainer>
-            <Title>{questions[currentQuestion].text}</Title>
-            <Progress key={progressKey} max={INTERVAL_TIME} />
-            <AnswearContainer>
-                {questions[currentQuestion].answers.map((answear) => (
-                    <Answear key={uuidv4()}>{answear}</Answear>
-                ))}
-            </AnswearContainer>
+            {!isQuizEnd.current && (
+                <>
+                    <Title>{questions[currentQuestion].text}</Title>
+                    <Progress key={progressKey} max={INTERVAL_TIME} />
+                        <AnswearContainer>
+                        {questions[currentQuestion].answers.map((answear) => (
+                            <Answear key={uuidv4()}>{answear}</Answear>
+                        ))}
+                        </AnswearContainer>
+                </>
+            )}
+           
         </MainContainer>
     )
 }
