@@ -33,7 +33,11 @@ export const QuizView = () => {
                     <Progress key={progressKey} max={INTERVAL_TIME} />
                         <AnswearContainer>
                         {questions[currentQuestion].answers.map((answear) => (
-                            <Answear key={uuidv4()}>{answear}</Answear>
+                            <Answear 
+                            key={uuidv4()}
+                            correct={`${questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear)}`}
+                            
+                            >{answear}</Answear>
                         ))}
                         </AnswearContainer>
                 </>
