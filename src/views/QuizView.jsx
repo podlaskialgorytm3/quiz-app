@@ -15,6 +15,7 @@ export const QuizView = () => {
     const [progressKey,setProgressKey] = useState(uuidv4())
     const {changeView} = useContext(ViewContext)
     const isQuizEnd = useRef(false)
+    const colorAnswear = useRef('')
     useEffect(() => {
         const intervalTimmer = setInterval(() => {
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
@@ -25,6 +26,17 @@ export const QuizView = () => {
     if(currentQuestion === questions.length - 1){
             isQuizEnd.current = true
     }
+
+    const handleAnswerClick = (isCorrect) => {
+        if(isCorrect){
+            colorAnswear.current = 'green'
+        }
+        else{
+            colorAnswear.current = 'red'
+        }
+
+    }
+
     return(
         <MainContainer>
             {!isQuizEnd.current && (
@@ -36,7 +48,8 @@ export const QuizView = () => {
                             <Answear 
                             key={uuidv4()}
                             correct={`${questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear)}`}
-                            
+                            colorAnswear={colorAnswear.current}
+                            onClick={() => handleAnswerClick(questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear))}
                             >{answear}</Answear>
                         ))}
                         </AnswearContainer>
