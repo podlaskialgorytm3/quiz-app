@@ -1,6 +1,8 @@
 import { useContext,useEffect,useState } from "react"
 import { ViewContext } from "../stores/ViewContext"
 import { MainContainer } from '../components/MainContainer'
+import { Title } from "../components/Title"
+import { AnswerContainer } from '../features/question-feature/AnswerContainer'
 import questions from '../data/questions'
 
 const INTERVAL_TIME = 15000
@@ -19,7 +21,10 @@ export const QuizView = () => {
     
     return(
         <MainContainer>
-            {questions[currentQuestion].text}
+            <Title>{questions[currentQuestion].text}</Title>
+            <AnswerContainer>
+                
+            </AnswerContainer>
         </MainContainer>
     )
 }
