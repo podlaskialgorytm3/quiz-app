@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ViewContext } from "../context/ViewContext";
+import { ViewContext } from "../stores/ViewContext";
 import { StartView } from '../views/StartView'
 import { QuizView } from '../views/QuizView'
 import { ResultView } from '../views/ResultView'

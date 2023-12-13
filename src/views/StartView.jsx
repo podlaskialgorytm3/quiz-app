@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { ViewContext } from "../context/ViewContext"
-import { MainContainer } from "../components/molecules/MainContainer"
-import { Title } from "../components/atoms/Title"
-import { Button } from "../components/atoms/Button"
+import { ViewContext } from "../stores/ViewContext"
+import { MainContainer } from "../components/MainContainer"
+import { Title } from "../components/Title"
+import { Button } from "../components/Button"
 
 export const StartView = () => {
     const {view, changeView } = useContext(ViewContext)
