@@ -7,7 +7,7 @@ import { AnswearContainer } from '../features/question-feature/AnswearContainer'
 import { Answear } from "../features/question-feature/Answear"
 import questions from '../data/questions'
 
-const INTERVAL_TIME = 1000
+const INTERVAL_TIME = 15000
 
 export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
@@ -25,7 +25,9 @@ export const QuizView = () => {
         <MainContainer>
             <Title>{questions[currentQuestion].text}</Title>
             <AnswearContainer>
-                
+                {questions[currentQuestion].answers.map((answear) => (
+                    <Answear key={uuidv4()}>{answear}</Answear>
+                ))}
             </AnswearContainer>
         </MainContainer>
     )

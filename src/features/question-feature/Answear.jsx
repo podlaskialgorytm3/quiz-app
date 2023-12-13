@@ -1,7 +1,7 @@
-export const Answear = ({children,key}) => {
+export const Answear = ({children, ...props}) => {
 
     return(
-        <div className="" key={key}>
+        <div className="" {...props}>
             {children}
         </div>
     )
