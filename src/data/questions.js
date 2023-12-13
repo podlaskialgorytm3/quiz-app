@@ -1,4 +1,4 @@
-export const TIME = 5000;
+export const TIME = 15000;
 export default [
     {
       id: 'q1',

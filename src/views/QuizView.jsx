@@ -25,12 +25,11 @@ export const QuizView = () => {
             setProgressKey(uuidv4());
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length);
         }, INTERVAL_TIME);
-        if (currentQuestion + 1 === questions.length + 1) {
+        if (currentQuestion + 1 === questions.length) {
             isQuizEnd.current = true;
-            clearInterval(intervalRef.current); 
         }
         return () => clearInterval(intervalRef.current);
-    }, [questions.length, INTERVAL_TIME]);
+    }, [questions.length, currentQuestion]);
 
     const handleAnswearClick = (isCorrect, answearIndex) => {
         setColor(isCorrect ? '#4caf50' : '#f44336');
