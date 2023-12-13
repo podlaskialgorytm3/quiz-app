@@ -14,6 +14,7 @@ export const QuizView = () => {
     const [currentQuestion,setCurrentQuestion] = useState(0)
     const [progressKey,setProgressKey] = useState(uuidv4())
     const [color,setColor] = useState('#678ea6')
+    const [highlightedAnswerIndex, setHighlightedAnswerIndex] = useState(null);
     const {changeView} = useContext(ViewContext)
     const isQuizEnd = useRef(false)
 
@@ -25,10 +26,12 @@ export const QuizView = () => {
         return () => clearInterval(intervalTimmer)
     },[questions.length])
 
-    const handleAnswearClick = (isCorrect) => {
+    const handleAnswearClick = (isCorrect,answearIndex) => {
         setColor(isCorrect ? '#4caf50' : '#f44336')
+        setHighlightedAnswerIndex(answearIndex)
         setTimeout(() => {
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length)
+            setHighlightedAnswerIndex(null);
             setProgressKey(uuidv4())
             setColor('#678ea6')
         },500)
@@ -45,11 +48,11 @@ export const QuizView = () => {
                     <Title>{questions[currentQuestion].text}</Title>
                     <Progress key={progressKey} max={INTERVAL_TIME} />
                         <AnswearContainer>
-                        {questions[currentQuestion].answers.map((answear) => (
+                        {questions[currentQuestion].answers.map((answear,index) => (
                             <Answear 
                             key={uuidv4()}
-                            onClick={() => handleAnswearClick(questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear))}
-                            color={color}
+                            onClick={() => handleAnswearClick(questions[currentQuestion].correctAnswerIndex === questions[currentQuestion].answers.indexOf(answear),index)}
+                            color={highlightedAnswerIndex === index ? color : '#678ea6'}
                             >{answear}</Answear>
                         ))}
                         </AnswearContainer>
