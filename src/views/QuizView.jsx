@@ -7,7 +7,6 @@ import { AnswearContainer } from '../features/question-feature/AnswearContainer'
 import { Answear } from "../features/question-feature/Answear"
 import { Progress } from "../features/question-feature/Progress";
 import questions from '../data/questions'
-import { ResultView } from "./ResultView";
 
 const INTERVAL_TIME = 15000
 
