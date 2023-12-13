@@ -1,4 +1,5 @@
 import { useContext,useEffect,useState } from "react"
+import {v4 as uuidv4} from 'uuid';
 import { ViewContext } from "../stores/ViewContext"
 import { MainContainer } from '../components/MainContainer'
 import { Title } from "../components/Title"
@@ -24,9 +25,7 @@ export const QuizView = () => {
         <MainContainer>
             <Title>{questions[currentQuestion].text}</Title>
             <AnswearContainer>
-                {questions[currentQuestion].answers.map((answear) => (
-                    <p>{answear}</p>
-                ))}
+                
             </AnswearContainer>
         </MainContainer>
     )
