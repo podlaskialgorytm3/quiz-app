@@ -1,3 +1,4 @@
+export const TIME = 5000;
 export default [
     {
       id: 'q1',
@@ -9,6 +10,7 @@ export default [
         'A library used for building mobile applications only.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q2',
@@ -20,6 +22,7 @@ export default [
         'Part of the Redux library for managing global state.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q3',
@@ -31,6 +34,7 @@ export default [
         'A tool for making HTTP requests in a React application.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q4',
@@ -42,6 +46,7 @@ export default [
         'By using the "new" keyword followed by the component name.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q5',
@@ -53,6 +58,7 @@ export default [
         'A library for managing global state in React applications.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q6',
@@ -64,6 +70,7 @@ export default [
         'By using the loop() method to iterate over an array of data and returning JSX.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
     {
       id: 'q7',
@@ -75,5 +82,6 @@ export default [
         'Using an if-else statement.',
       ],
       correctAnswerIndex: 0,
+      answer_time: TIME,
     },
   ];
