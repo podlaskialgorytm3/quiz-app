@@ -1,7 +1,7 @@
 import questions from "../data/questions";
 
 export const adjustAnswearsArray = (answears) => {
-    const expectedLength = questions.length;
+    const expectedLength = questions.length - 1;
   
     if (answears.length < expectedLength) {
       const missingCount = expectedLength - answears.length;

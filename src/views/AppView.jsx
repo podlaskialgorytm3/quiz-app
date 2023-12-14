@@ -22,7 +22,6 @@ export const ViewContextProvider = () => {
   }, [nextView]);
 
   const changeView = (newView) => {
-    // Opóźnij aktualizację stanu na następny cykl życia przeglądarki
     setTimeout(() => {
       setNextView(newView);
     }, 0);

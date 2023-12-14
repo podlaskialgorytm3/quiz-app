@@ -27,10 +27,6 @@ export const QuizView = ({changeScore}) => {
             setProgressKey(uuidv4());
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length);
         }, INTERVAL_TIME);
-        if (currentQuestion + 1 === questions.length) {
-            changeScore(poits.current, answears.current)
-            isQuizEnd.current = true;
-        }
         return () => {
             clearInterval(intervalRef.current);
         }
@@ -55,12 +51,13 @@ export const QuizView = ({changeScore}) => {
             }, INTERVAL_TIME);
         }, 500);
     };
-
-    if (currentQuestion + 1 === questions.length + 1) {
-        changeScore(poits.current, answears.current)
-        isQuizEnd.current = true;
-        clearInterval(intervalRef.current);
-    }
+    useEffect(() => { 
+        if (currentQuestion + 1 === questions.length) {
+            isQuizEnd.current = true;
+            changeScore(poits.current, answears.current)
+            clearInterval(intervalRef.current);
+        }
+    },[currentQuestion])
 
     return (
         <MainContainer>

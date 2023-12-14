@@ -84,4 +84,16 @@ export default [
       correctAnswerIndex: 0,
       answer_time: TIME,
     },
+    {
+      id: 'q7',
+      text: 'Which approach can NOT be used to render content conditionally?',
+      answers: [
+        'Using a the #if template syntax.',
+        'Using a ternary operator.',
+        'Using the && operator.',
+        'Using an if-else statement.',
+      ],
+      correctAnswerIndex: 0,
+      answer_time: TIME,
+    },
   ];
