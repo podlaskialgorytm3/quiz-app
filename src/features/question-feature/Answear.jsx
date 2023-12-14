@@ -8,7 +8,7 @@ const StyledAnswearContainer = styled.div`
 export const Answear = ({ children,onClick,color, ...props }) => {
   return (
     <StyledAnswearContainer
-      className="w-[700px] h-16 mt-6 bg-gray-700 text-center leading-[64px] rounded-3xl"
+      className="w-[700px] h-16 mt-6 bg-gray-700 text-center leading-[64px] rounded-3xl cursor-pointer"
       {...props}
       onClick={onClick}
       color={color}
