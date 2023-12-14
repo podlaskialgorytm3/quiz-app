@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MainContainer } from "../components/MainContainer"
 import IMG from '../assets/quiz-complete.png'
 import { ResultTitle } from "../features/result-feature/ResultTitle"
@@ -6,7 +6,6 @@ import questions from "../data/questions"
 
 
 export const ResultView = ({score}) => {
-    console.log(score)
     const percentage = (score / (questions.length - 1)) * 100;
     return(
         <MainContainer>
