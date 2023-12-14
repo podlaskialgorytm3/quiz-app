@@ -5,7 +5,7 @@ export const adjustAnswearsArray = (answears) => {
   
     if (answears.length < expectedLength) {
       const missingCount = expectedLength - answears.length;
-      const additionalAnswears = Array(missingCount).fill(null); // Lub dowolną inną wartość pustą
+      const additionalAnswears = Array(missingCount).fill("dull"); // Lub dowolną inną wartość pustą
   
       return [...answears, ...additionalAnswears];
     } else {

@@ -12,34 +12,21 @@ export const ViewContextProvider = () => {
     answears: []
   })
 
-  const [nextView, setNextView] = useState(null);
-
-  useEffect(() => {
-    if (nextView !== null) {
-      setView(nextView);
-      setNextView(null);
-    }
-  }, [nextView]);
-
   const changeView = (newView) => {
-    setTimeout(() => {
-      setNextView(newView);
-    }, 0);
+      console.log("CHANGE VIEW")
+      setView(newView);
   }
 
   const changeScore = (points, answears) => {
     const adjustedAnswears = adjustAnswearsArray(answears);
-    setScore({
-      points: points,
-      answears: adjustedAnswears
-    })
+    setScore((prev) => { return { ...prev, points, answears: adjustedAnswears } })
   }
 
   return (
     <ViewContext.Provider value={{ view, changeView }}>
       <div className="flex flex-col justify-center items-center h-5/6">
         {view === "start" && <StartView />}
-        {view === "quiz" && <QuizView changeScore={changeScore} />}
+        {view === "quiz" && <QuizView changeScore={changeScore} score={score}/>}
         {view === "result" && <ResultView score={score} />}
       </div>
     </ViewContext.Provider>

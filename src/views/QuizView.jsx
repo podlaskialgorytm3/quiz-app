@@ -8,10 +8,11 @@ import { Answear } from "../features/question-feature/Answear";
 import { Progress } from "../features/question-feature/Progress";
 import questions from '../data/questions';
 import { TIME } from "../data/questions";
+import { ResultView } from "./ResultView";
 
 const INTERVAL_TIME = TIME;
 
-export const QuizView = ({changeScore}) => {
+export const QuizView = ({changeScore,score}) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [progressKey, setProgressKey] = useState(uuidv4());
     const [color, setColor] = useState('#678ea6');
@@ -21,6 +22,8 @@ export const QuizView = ({changeScore}) => {
     const intervalRef = useRef(null);
     const poits = useRef(0);
     const answears = useRef([]);
+
+    console.log("QUIZ VIEW");
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
@@ -51,17 +54,15 @@ export const QuizView = ({changeScore}) => {
             }, INTERVAL_TIME);
         }, 500);
     };
-    useEffect(() => { 
-        if (currentQuestion + 1 === questions.length) {
-            isQuizEnd.current = true;
-            changeScore(poits.current, answears.current)
-            clearInterval(intervalRef.current);
-        }
-    },[currentQuestion])
-
+    if (currentQuestion + 1 === questions.length && !isQuizEnd.current) {
+        //changeView('result');
+        isQuizEnd.current = true;
+        changeScore(poits.current, answears.current)
+        clearInterval(intervalRef.current);
+    }
     return (
         <MainContainer>
-            {!isQuizEnd.current && (
+            {!isQuizEnd.current ? (
                 <>
                     <Title>{questions[currentQuestion].text}</Title>
                     <Progress key={progressKey} max={questions[currentQuestion].answer_time} />
@@ -75,8 +76,10 @@ export const QuizView = ({changeScore}) => {
                         ))}
                     </AnswearContainer>
                 </>
-            )}
-            {isQuizEnd.current && <>{changeView('result')}</>}
+            ):
+            <ResultView score={score}/>
+            
+            }
         </MainContainer>
     );
 };
