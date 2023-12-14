@@ -12,7 +12,7 @@ import { ResultView } from "./ResultView";
 
 const INTERVAL_TIME = TIME;
 
-export const QuizView = ({changeScore,score}) => {
+export const QuizView = ({changeScore}) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [progressKey, setProgressKey] = useState(uuidv4());
     const [color, setColor] = useState('#678ea6');
@@ -55,14 +55,14 @@ export const QuizView = ({changeScore,score}) => {
         }, 500);
     };
     if (currentQuestion + 1 === questions.length && !isQuizEnd.current) {
-        //changeView('result');
+        changeView('result');
         isQuizEnd.current = true;
-        changeScore(poits.current, answears.current)
+        changeScore(poits.current)
         clearInterval(intervalRef.current);
     }
     return (
         <MainContainer>
-            {!isQuizEnd.current ? (
+            {!isQuizEnd.current && (
                 <>
                     <Title>{questions[currentQuestion].text}</Title>
                     <Progress key={progressKey} max={questions[currentQuestion].answer_time} />
@@ -75,10 +75,7 @@ export const QuizView = ({changeScore,score}) => {
                             >{answear}</Answear>
                         ))}
                     </AnswearContainer>
-                </>
-            ):
-            <ResultView score={score}/>
-            
+                </>  )     
             }
         </MainContainer>
     );

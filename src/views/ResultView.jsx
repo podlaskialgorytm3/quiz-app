@@ -6,6 +6,7 @@ import questions from "../data/questions"
 
 
 export const ResultView = ({score}) => {
+    console.log(score)
        return(
         <MainContainer>
              <img src={IMG} alt="quiz complete" className="w-[150px] h-[150px]"/>
