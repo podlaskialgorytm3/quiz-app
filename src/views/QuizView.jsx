@@ -11,7 +11,7 @@ import { TIME } from "../data/questions";
 
 const INTERVAL_TIME = TIME;
 
-export const QuizView = () => {
+export const QuizView = ({changeScore}) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [progressKey, setProgressKey] = useState(uuidv4());
     const [color, setColor] = useState('#678ea6');
@@ -19,6 +19,8 @@ export const QuizView = () => {
     const { changeView } = useContext(ViewContext);
     const isQuizEnd = useRef(false);
     const intervalRef = useRef(null);
+    const poits = useRef(0);
+    const answears = useRef([]);
 
     useEffect(() => {
         intervalRef.current = setInterval(() => {
@@ -26,15 +28,22 @@ export const QuizView = () => {
             setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length);
         }, INTERVAL_TIME);
         if (currentQuestion + 1 === questions.length) {
+            changeScore(poits.current, answears.current)
             isQuizEnd.current = true;
         }
-        return () => clearInterval(intervalRef.current);
+        return () => {
+            clearInterval(intervalRef.current);
+        }
     }, [questions.length, currentQuestion]);
 
     const handleAnswearClick = (isCorrect, answearIndex) => {
         setColor(isCorrect ? '#4caf50' : '#f44336');
         setHighlightedAnswerIndex(answearIndex);
         clearInterval(intervalRef.current);
+        answears.current[currentQuestion] = answearIndex;
+        if (isCorrect) {
+            poits.current += 1;
+        }
         setTimeout(() => {
             setCurrentQuestion((prevIndex) => prevIndex + 1);
             setHighlightedAnswerIndex(null);
@@ -48,8 +57,9 @@ export const QuizView = () => {
     };
 
     if (currentQuestion + 1 === questions.length + 1) {
+        changeScore(poits.current, answears.current)
         isQuizEnd.current = true;
-        clearInterval(intervalRef.current); 
+        clearInterval(intervalRef.current);
     }
 
     return (

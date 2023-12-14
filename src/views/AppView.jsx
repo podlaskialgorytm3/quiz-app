@@ -4,6 +4,21 @@ import { StartView } from '../views/StartView'
 import { QuizView } from '../views/QuizView'
 import { ResultView } from '../views/ResultView'
 
+
+const adjustAnswearsArray = (answears) => {
+  const expectedLength = 7;
+
+  if (answears.length < expectedLength) {
+    const missingCount = expectedLength - answears.length;
+    const additionalAnswears = Array(missingCount).fill(null); // Lub dowolną inną wartość pustą
+
+    return [...answears, ...additionalAnswears];
+  } else {
+    return answears.slice(0, expectedLength);
+  }
+};
+
+
 export const ViewContextProvider = () => {
   const [view, setView] = useState('start')
   const [score, setScore] = useState({
@@ -28,9 +43,10 @@ export const ViewContextProvider = () => {
   }
 
   const changeScore = (points, answears) => {
+    const adjustedAnswears = adjustAnswearsArray(answears);
     setScore({
       points: points,
-      answears: answears
+      answears: adjustedAnswears
     })
   }
 
