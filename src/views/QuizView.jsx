@@ -23,8 +23,6 @@ export const QuizView = ({changeScore}) => {
     const poits = useRef(0);
     const answears = useRef([]);
 
-    console.log("QUIZ VIEW");
-
     useEffect(() => {
         intervalRef.current = setInterval(() => {
             setProgressKey(uuidv4());

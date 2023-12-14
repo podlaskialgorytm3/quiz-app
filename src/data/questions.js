@@ -1,4 +1,4 @@
-export const TIME = 1000;
+export const TIME = 15000;
 export default [
     {
       id: 'q1',
@@ -9,7 +9,7 @@ export default [
         'A framework to build user interfaces with help of imperative code.',
         'A library used for building mobile applications only.',
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 3,
       answer_time: TIME,
     },
     {
@@ -21,7 +21,7 @@ export default [
         'Handling errors within the application.',
         'Part of the Redux library for managing global state.',
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 2,
       answer_time: TIME,
     },
     {
@@ -33,7 +33,7 @@ export default [
         'A specific HTML version that was explicitly created for React.',
         'A tool for making HTTP requests in a React application.',
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 1,
       answer_time: TIME,
     },
     {
@@ -69,7 +69,7 @@ export default [
         'By using the forEach() method to iterate over an array of data and returning JSX.',
         'By using the loop() method to iterate over an array of data and returning JSX.',
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 3,
       answer_time: TIME,
     },
     {
@@ -81,7 +81,7 @@ export default [
         'Using the && operator.',
         'Using an if-else statement.',
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 1,
       answer_time: TIME,
     },
     {

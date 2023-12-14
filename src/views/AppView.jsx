@@ -3,7 +3,6 @@ import { ViewContext } from "../stores/ViewContext";
 import { StartView } from '../views/StartView'
 import { QuizView } from '../views/QuizView'
 import { ResultView } from '../views/ResultView'
-import { adjustAnswearsArray } from "../utils/AdjustAnswearsArray";
 
 export const ViewContextProvider = () => {
   const [view, setView] = useState('start')

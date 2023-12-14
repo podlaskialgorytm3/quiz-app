@@ -6,7 +6,7 @@ import questions from "../data/questions"
 
 
 export const ResultView = ({score}) => {
-    const percentage = (score / (questions.length - 1)) * 100;
+    const percentage = ((score / (questions.length - 1)) * 100).toFixed(2);
     return(
         <MainContainer>
             <img src={IMG} alt="quiz complete" className="w-[150px] h-[150px]"/>
