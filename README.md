@@ -9,3 +9,4 @@
   </li>
 </ul>
 <h3>Motivation:</h3>
+<p>I wolud like to imporve a knownledge of technology in React like: Context API, useEffect.</p>
